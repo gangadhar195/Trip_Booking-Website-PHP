@@ -1,30 +1,39 @@
 <?php
 $submit = false;
 if(isset($_POST['name'])){
+    //variable decleration for server
 $server = "localhost";
 $username = "root";
 $password = "";
-
+//Database Connection
 $con = mysqli_connect($server,$username,$password);
+//Check connection
 if(!$con){
     die("DB Connection Faild ".mysqli_connect_error());
 }
 // echo"DB Connection Sucessful";
+
+//post data in database
+
 $name = $_POST['name'];
 $age=$_POST['age'];
 $gender=$_POST['gender'];
 $email=$_POST['email'];
 $phone=$_POST['phone'];
 $desc = $_POST['desc'];
+//inser sql quer
 $sql = "INSERT INTO `trip`.`trip`(`name`,`age`,`gender`,`email`,`phone`,`other`,`dt`) VALUES('$name','$age','$gender','$email'
 ,'$phone','$desc',current_timestamp());";
 // echo $sql;
+//connection is true go forword
 if($con->query($sql)==TRUE){
     // echo"Sucessful Inserted";
     $submit = true;
 }else{
     echo"Error :$sql <br> $con->error";
 }
+//close DB connection
+
 $con->close();
 }
 ?>
@@ -98,7 +107,6 @@ $con->close();
         <!-- <button class="btn">Reset</button> -->
       </form>
     </div>
-    <script src="index.js"></script>
-    
+     
   </body>
 </html>
