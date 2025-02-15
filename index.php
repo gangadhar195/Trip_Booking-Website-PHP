@@ -107,6 +107,8 @@ $con->close();
         <!-- <button class="btn">Reset</button> -->
       </form>
     </div>
-     
+     <div class="footer">
+      &copy; College trip to US
+     </div>
   </body>
 </html>
